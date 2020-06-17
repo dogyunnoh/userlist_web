@@ -1,7 +1,7 @@
 var express = require('express') 
 var path = require('path')
 var mysql = require('mysql')
-const { title } = require('process')
+var apiRouter = require('./routes/api_router')
 var app = express()
 
 sql_config = {
@@ -18,6 +18,9 @@ app.set('view engine', 'ejs')
 
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
+
+app.use('/', apiRouter)
+
 
 app.get('/hello', (request, response)=>{
     //console.log(request)
